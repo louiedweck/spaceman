@@ -107,7 +107,6 @@ def is_guess_in_word(guess, secret_word):
 
     '''
     # TODO: check if the letter guess is in the secret word
-    # check if the guess is in the secret word
     if guess in secret_word:
         # if so return True
         return True
@@ -116,14 +115,77 @@ def is_guess_in_word(guess, secret_word):
         return False
 
 
+def handle_input(prompt):
+    '''A function that given a prompt, asks a user for an input but also runs the input through a series of tests
+    to ensure it is a clean input'''
+
+    # ask the user for an input and save it to user_input
+    user_input = input(prompt)
+    # while the user input has a length not equal one or the input is not a letter
+    while len(user_input) != 1 or not user_input.isascii():
+        # ask the user for a new input
+        user_input = input('Invalid input, please enter one letter: ')
+    return user_input
+
+
 def spaceman(secret_word):
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
 
     Args:
       secret_word (string): the secret word to guess.
-
     '''
+    secret_word = secret_word
+    print()
+    print('------------------------------------')
+    print()
+    print('Wecome to Spaceman! Here are your blanks: ')
+    print('_' * len(secret_word))
+    print()
+
+    lives = 7
+    letters_guessed = []
+    # while the secret word hasnt been guessed and lives are greater than 0 we continue to run the game
+    while not is_word_guessed(secret_word, letters_guessed) and lives > 0:
+        # prompt the user for a guess
+        guess = handle_input('Enter a letter: ')
+        # add the guess to letters_guessed
+        letters_guessed.append(guess)
+        # check if the guess is in the secret word
+        if is_guess_in_word(guess, secret_word):
+            # if so let the user know they answered correctly!
+            print('Congrats! The letter ' + guess + ' was found!')
+        # otherwise, the user guessed incorrectly
+        else:
+            lives -= 1
+            # tell the user they were wrong
+            print('Boohoo! The letter ' + guess + ' was not found!')
+        # tell the user how many lives they have
+        print('You have ' + str(lives) + ' lives left.')
+        # show the user their guesses
+        print('Letters guessed: ' + ', '.join(letters_guessed))
+        # show the user the current word
+        print(get_guessed_word(secret_word, letters_guessed))
+        print()
+    # check if lives is greater than 0 to see if the user won
+    if lives > 0:
+        # the user won! congradulate them.
+        print('Congratulations! You win! You only used ' +
+              str(7 - lives) + ' lives!')
+    # otherwise, the player lost
+    else:
+        # tell the user they lost and tell them what the word was
+        print('Too bad so sad! You lose! The word was: ' + secret_word)
+
+
+continue_playing = True
+while continue_playing:
+    # These function calls that will start the game
+    secret_word = load_word()
+    spaceman(secret_word)
+    yes_or_no = input('Type q to quit or anything else to play again: ')
+    if yes_or_no == 'q' or yes_or_no == 'Q':
+        continue_playing = False
 
     # TODO: show the player information about the game according to the project spec
 
@@ -137,5 +199,5 @@ def spaceman(secret_word):
 
 
 # These function calls that will start the game
-secret_word = load_word()
-spaceman(secret_word)
+# secret_word = load_word()
+# spaceman(secret_word)
