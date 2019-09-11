@@ -54,7 +54,44 @@ def get_guessed_word(secret_word, letters_guessed):
 
     # TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
 
-    pass
+    # create an array with blanks ('_') of size of secret word
+    blanks = ['_'] * len(secret_word)
+    # iterate through the letters in letters_guessed
+    for letter in letters_guessed:
+        # check if the guess is in the word
+        if is_guess_in_word(letter, secret_word):
+            # if so we should find the indicies where the letter appears in the secret word
+            indicies = find_indicies(secret_word, letter)
+            # Go through the indicies in our index list
+            for index in indicies:
+                # update blanks with the letter at those indicies
+                blanks[index] = letter
+    # return a string version of our blanks list
+    return ''.join(blanks)
+
+
+def find_indicies(word, target):
+    '''
+    A function that iterates through a string called word and returns an array of indicies where a target (letter) appears.
+
+    Args:
+        word (string): the word we're searching through
+        target (string): the letter we're searching for
+
+    Returns:
+        array of integers. These are the positions (indicies) of the letter in our word.
+     '''
+
+    #  create an empty array of indicies
+    indicies = []
+    # go over every index of the word
+    for i in range(len(word)):
+        # check if the word at that index equals the taget
+        if word[i] == target:
+            # if so add that index to our indicies list
+            indicies.append(i)
+    # return our list of indicies
+    return indicies
 
 
 def is_guess_in_word(guess, secret_word):
