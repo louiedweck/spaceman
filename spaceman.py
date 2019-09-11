@@ -107,8 +107,13 @@ def is_guess_in_word(guess, secret_word):
 
     '''
     # TODO: check if the letter guess is in the secret word
-
-    pass
+    # check if the guess is in the secret word
+    if guess in secret_word:
+        # if so return True
+        return True
+    # otherwise (guess not in secret_word)
+    else:
+        return False
 
 
 def spaceman(secret_word):
