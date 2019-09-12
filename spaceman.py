@@ -120,7 +120,7 @@ def handle_input(prompt):
     # ask the user for an input and save it to user_input
     user_input = input(prompt).lower()
     # while the user input has a length not equal one or the input is not a letter
-    while len(user_input) != 1 or not user_input in 'abcefghijklmnopqrstuvwxyz':
+    while len(user_input) != 1 or not user_input.isalpha():
         # ask the user for a new input
         user_input = input('Invalid input, please enter one letter: ')
     return user_input
@@ -134,9 +134,7 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
     '''
     secret_word = secret_word
-    print()
-    print('------------------------------------')
-    print()
+    print("\n------------------------------------\n")
     print('Wecome to Spaceman! Here are your blanks: ')
     print('_' * len(secret_word))
     print()
