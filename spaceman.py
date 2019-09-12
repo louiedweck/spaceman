@@ -116,13 +116,11 @@ def is_guess_in_word(guess, secret_word):
 
 
 def handle_input(prompt):
-    '''A function that given a prompt, asks a user for an input but also runs the input through a series of tests
-    to ensure it is a clean input'''
 
     # ask the user for an input and save it to user_input
-    user_input = input(prompt)
+    user_input = input(prompt).lower()
     # while the user input has a length not equal one or the input is not a letter
-    while len(user_input) != 1 or not user_input.isascii():
+    while len(user_input) != 1 or not user_input in 'abcefghijklmnopqrstuvwxyz':
         # ask the user for a new input
         user_input = input('Invalid input, please enter one letter: ')
     return user_input
@@ -186,18 +184,3 @@ while continue_playing:
     yes_or_no = input('Type q to quit or anything else to play again: ')
     if yes_or_no == 'q' or yes_or_no == 'Q':
         continue_playing = False
-
-    # TODO: show the player information about the game according to the project spec
-
-    # TODO: Ask the player to guess one letter per round and check that it is only one letter
-
-    # TODO: Check if the guessed letter is in the secret or not and give the player feedback
-
-    # TODO: show the guessed word so far
-
-    # TODO: check if the game has been won or lost
-
-
-# These function calls that will start the game
-# secret_word = load_word()
-# spaceman(secret_word)
