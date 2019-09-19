@@ -174,11 +174,12 @@ def spaceman(secret_word):
         print('Too bad so sad! You lose! The word was: ' + secret_word)
 
 
-continue_playing = True
-while continue_playing:
-    # These function calls that will start the game
-    secret_word = load_word()
-    spaceman(secret_word)
-    yes_or_no = input('Type q to quit or anything else to play again: ')
-    if yes_or_no == 'q' or yes_or_no == 'Q':
-        continue_playing = False
+if __name__ == '__main__':
+    continue_playing = True
+    while continue_playing:
+        # These function calls that will start the game
+        secret_word = load_word()
+        spaceman(secret_word)
+        yes_or_no = input('Type q to quit or anything else to play again: ')
+        if yes_or_no == 'q' or yes_or_no == 'Q':
+            continue_playing = False
