@@ -17,3 +17,8 @@ class SpacemanTest(unittest.TestCase):
         assert g_in_goon is True
         z_in_apple = is_guess_in_word('z', 'apple')
         assert z_in_apple is False
+
+    def test_find_indicies(self):
+        assert find_indicies("alpha", 'p') == [2]
+        assert find_indicies("aaaaa", 'a') == [0, 1, 2, 3, 4]
+        assert find_indicies("alpha", 'z') == []
