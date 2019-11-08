@@ -1,0 +1,7 @@
+[
+  "spaceman_test.py::SpacemanTest::test_find_indicies",
+  "spaceman_test.py::SpacemanTest::test_handle_input",
+  "spaceman_test.py::SpacemanTest::test_is_guess_in_word",
+  "spaceman_test.py::SpacemanTest::test_is_word_guessed",
+  "spaceman_test.py::SpacemanTest::test_load_word"
+]

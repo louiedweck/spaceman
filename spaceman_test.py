@@ -22,3 +22,7 @@ class SpacemanTest(unittest.TestCase):
         assert find_indicies("alpha", 'p') == [2]
         assert find_indicies("aaaaa", 'a') == [0, 1, 2, 3, 4]
         assert find_indicies("alpha", 'z') == []
+
+    def test_get_guessed_word(self):
+        blanks_in_pie = get_guessed_word("pie", "_", "_", "_")
+        assert blanks_in_pie is True
